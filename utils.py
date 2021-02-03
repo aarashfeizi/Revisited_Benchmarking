@@ -132,8 +132,8 @@ def get_features(args, cfg):
     q = task.run(model, dataloader=q_dataloader)
 
 
-    d = {'X': x,
-         'Q': q}
+    d = {'X': x.T,
+         'Q': q.T}
     print('DONE embeddings!!')
     return d
 
