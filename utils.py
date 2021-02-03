@@ -105,6 +105,8 @@ def get_features(args, cfg):
 
     model = load_model(args, net, model_path).ft_net
 
+    if args.cuda:
+        model = model.cuda()
 
 
     normalize_param = dict(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
@@ -125,14 +127,14 @@ def get_features(args, cfg):
 
     x = task.run(model, dataloader=x_dataloader)
 
-    pdb.set_trace()
+
 
     q = task.run(model, dataloader=q_dataloader)
-    pdb.set_trace()
+
 
     d = {'X': x,
          'Q': q}
-
+    print('DONE embeddings!!')
     return d
 
 

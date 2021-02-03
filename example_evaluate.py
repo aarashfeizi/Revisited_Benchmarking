@@ -39,6 +39,10 @@ print('>> {}: Evaluating test dataset...'.format(test_dataset))
 # separates query image list from database image list, when revisited protocol used
 cfg = configdataset(test_dataset, os.path.join(data_root, 'datasets'))
 
+if args.gpu_ids != '':
+    os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu_ids
+    print(f"use gpu: {args.gpu_ids} to train.")
+
 # load query and database features
 print('>> {}: Loading features...'.format(test_dataset))    
 # features = loadmat(os.path.join(data_root, 'features', '{}_resnet_rsfm120k_gem.mat'.format(test_dataset)))
